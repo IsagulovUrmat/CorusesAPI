@@ -1,39 +1,48 @@
 from django.shortcuts import render
+from django.views.generic import DetailView
+from rest_framework.generics import ListAPIView, CreateAPIView
 from rest_framework.response import Response
 from .serializers import *
-from rest_framework import views, status
+from rest_framework import views, status, viewsets
 from .models import Category, Branch, Contact
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
 
-class CoursesView(views.APIView):
+# class CoursesView(views.APIView):
+#
+#     def get(self, request, *args, **kwargs):
+#         course = Course.objects.all()
+#         serializer = CourseSerializer(course, many=True)
+#         return Response(serializer.data)
+#
+#     def post(self, request, *args, **kwargs):
+#         serializer = CourseSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response({'data': 'OK'}, status=status.HTTP_201_CREATED)
+#         else:
+#             return Response(serializer.errors)
 
-    def get(self, request, *args, **kwargs):
-        course = Course.objects.all()
-        serializer = CourseSerializer(course, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, *args, **kwargs):
-        serializer = CourseSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({'data': 'OK'}, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors)
+class CourseView(ListAPIView, CreateAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseGroupSerializer
 
 
 class CoursesDetailView(views.APIView):
 
     def get(self, request, *args, **kwargs):
-        doctor = Course.objects.get(id=kwargs['course_id'])
-        serializer = CourseSerializer(doctor)
+        course = Course.objects.get(id=kwargs['course_id'])
+        serializer = CourseGroupSerializer(course)
         return Response(serializer.data)
 
     def delete(self, request, *args, **kwargs):
         course = Course.objects.get(id=kwargs['course_id'])
         course.delete()
         return Response({"data": "Delete successful!"})
+
+class CourseDetailView(DetailView):
+    model = Course
 
 class CategoryView(views.APIView):
 

@@ -16,7 +16,7 @@ class Contact(models.Model):
         (2,'Email'),
         (3, 'phone')
     )
-    status = models.IntegerField(choices=CHOICES)
+    status = models.IntegerField(choices=CHOICES, default=1)
 
 
     def __str__(self):
