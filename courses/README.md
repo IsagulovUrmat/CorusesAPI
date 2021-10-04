@@ -56,7 +56,5 @@ python manage.py runserver
 > ### `Django Rest Framework` - The toolkit used to build API
 > ### `Swagger UI` - for API documentation
 
----
-# Swagger UI
-Run the server and go to: ```http://127.0.0.1:8000/swagger/```
-***
+## Documentation
+To get the documentation go to https://courses31.docs.apiary.io/
