@@ -4,8 +4,8 @@ from rest_framework.routers import DefaultRouter
 from .views import *
 
 urlpatterns = [
-    path('/courses', CourseView.as_view(), name='course-group'),
-    path('/<int:course_id>/', CoursesDetailView.as_view()),
+    path('courses/', CourseView.as_view(), name='courses'),
+    path('courses/<int:course_id>/', CoursesDetailViewFirst.as_view(), name='course'),
 ]
 
 # router = DefaultRouter()
