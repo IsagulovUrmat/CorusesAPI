@@ -9,6 +9,8 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
 
+
+
 # class CoursesView(views.APIView):
 #
 #     def get(self, request, *args, **kwargs):
@@ -29,7 +31,7 @@ class CourseView(ListAPIView, CreateAPIView):
     serializer_class = CourseGroupSerializer
 
 
-class CoursesDetailView(views.APIView):
+class CoursesDetailViewFirst(views.APIView):
 
     def get(self, request, *args, **kwargs):
         course = Course.objects.get(id=kwargs['course_id'])
@@ -41,8 +43,8 @@ class CoursesDetailView(views.APIView):
         course.delete()
         return Response({"data": "Delete successful!"})
 
-class CourseDetailView(DetailView):
-    model = Course
+# class CourseDetailView(DetailView):
+#     model = Course
 
 class CategoryView(views.APIView):
 
