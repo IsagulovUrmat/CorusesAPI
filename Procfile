@@ -1,3 +1,3 @@
-web: gunicorn--chdir CorusesAPI courses.wsgi:application --log-file - --log-level debug
+web: gunicorn courses.wsgi
 python manage.py collectstatic --noinput
 manage.py migrate
