@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn courses.wsgi --log-file=-
+web: python courses/manage.py runserver 0.0.0.0:$PORT
