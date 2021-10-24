@@ -1,1 +1,1 @@
-web: gunicorn courses.wsgi --log-file -
+web: gunicorn --chdir CorusesAPI courses.wsgi
