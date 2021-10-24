@@ -1,1 +1,1 @@
-web: gunicorn --chdir CorusesAPI courses.wsgi
+web: gunicorn --chdir courses courses.wsgi
